@@ -1,10 +1,14 @@
-﻿using Busniess.Model;
-
-namespace Busniess.Services
+﻿namespace Busniess.Services
 {
   public class ListServices<T>
   {
-    private List<T> _itemsList = [];
+    private readonly FileServices _fileServices = new();
+    private readonly List<T> _itemsList;
+
+    public ListServices()
+    {
+      _itemsList = _fileServices.LoadFromFile<T>();
+    }
     public List<T> CreateList(T item)
     {
       _itemsList.Add(item);
