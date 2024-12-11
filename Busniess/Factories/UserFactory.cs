@@ -1,9 +1,10 @@
-﻿using Busniess.Model;
+﻿using Busniess.Interfaces;
+using Busniess.Models;
 
 namespace Busniess.Factories
 {
-  public class UserFactory
+  public class UserFactory : IUserFactory
   {
-    public static User Create() => new();
+    public IUserModel Create() => new UserModel();
   }
 }
