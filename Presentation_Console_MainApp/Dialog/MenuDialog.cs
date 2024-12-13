@@ -1,8 +1,7 @@
 ﻿using Busniess.Interfaces;
-using Presentation_Console_MainApp.Interfaces;
 
 namespace Presentation_Console_MainApp.Dialog;
-public class MenuDialog(Dialog dialog, IFileServices fileServices) : IMenuDialog
+public class MenuDialog(Dialog dialog, IFileServices fileServices)
 {
   private readonly Dialog _dialog = dialog;
   private readonly IFileServices _fileServices = fileServices;

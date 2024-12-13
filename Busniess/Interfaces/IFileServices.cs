@@ -1,8 +1,4 @@
-﻿namespace Busniess.Interfaces
+﻿namespace Busniess.Interfaces;
+public interface IFileServices : IFileRead, IFileWrite
 {
-  public interface IFileServices
-  {
-    IEnumerable<IUserModel> LoadFromFile();
-    bool SaveToFile(List<IUserModel> users);
-  }
 }

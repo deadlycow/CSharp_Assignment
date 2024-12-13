@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace Busniess.Services
 {
-  public class FileServices(string directoryPath = "Data", string filePath = "users.json") : IFileServices
+  public class FileServices(string directoryPath, string filePath) : IFileServices
   {
     private readonly string _directoryPath = directoryPath;
     private readonly string _filePath = Path.Combine(directoryPath, filePath);

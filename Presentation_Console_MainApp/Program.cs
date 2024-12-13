@@ -7,9 +7,15 @@ using Microsoft.Extensions.Hosting;
 using Presentation_Console_MainApp.Dialog;
 
 var host = Host.CreateDefaultBuilder()
-  .ConfigureServices(service =>
+  .ConfigureServices((context, service) =>
   {
-    service.AddScoped<IFileServices, FileServices>();
+    service.AddScoped<IFileServices>(provider =>
+    {
+      var directoryPath = "Data";
+      var fileName = "users.json";
+
+      return new FileServices(directoryPath, fileName);
+    });
     service.AddScoped<Dialog>();
     service.AddScoped<MenuDialog>();
     service.AddScoped<IUserFactory, UserFactory>();
