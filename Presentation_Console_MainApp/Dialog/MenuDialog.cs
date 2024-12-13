@@ -1,10 +1,12 @@
 ﻿using Busniess.Interfaces;
+using Presentation_Console_MainApp.Interfaces;
 
 namespace Presentation_Console_MainApp.Dialog;
-public class MenuDialog(Dialog dialog, IFileServices fileServices)
+public class MenuDialog(IDialog dialog, IFileServices fileServices, IUserInputService userInputService)
 {
-  private readonly Dialog _dialog = dialog;
+  private readonly IDialog _dialog = dialog;
   private readonly IFileServices _fileServices = fileServices;
+  private readonly IUserInputService _userInputService = userInputService;
 
   private readonly string[] menuOptions =
     [
@@ -23,31 +25,14 @@ public class MenuDialog(Dialog dialog, IFileServices fileServices)
       {
         Console.WriteLine(menuItem);
       }
-      var userChoice = Dialog.PromptUserMenuChoice();
-      OptionMenu(userChoice);
+      OptionMenu(_userInputService.UserInputKey());
     }
   }
   public void AddMenu()
   {
-    List<IUserModel> users = [];
-    do
-    {
-      Console.Clear();
-      Console.WriteLine($"{"",3}Add new contact.");
-
-      var user = _dialog.GatherUserDetails();
-      users.Add(user);
-
-      Console.WriteLine("Contact added successfully.");
-    } while (Dialog.PromptForAdditinalUsers());
-
-    if (users.Count > 1)
-      Console.WriteLine("All contacts saved successfully.");
-    else
-      Console.WriteLine("Contact saved successfully.");
-
-    _fileServices.SaveToFile(users);
-    Dialog.PromptAnyKeyToContinue();
+    Console.Clear();
+    Console.WriteLine($"{"",3}Add new contact.");
+    _dialog.GatherUserDetails();
   }
   public void ListAllMenu()
   {
@@ -67,7 +52,7 @@ public class MenuDialog(Dialog dialog, IFileServices fileServices)
       Console.WriteLine($"City:         {user.City}");
       Console.WriteLine(new string('-', 50));
     };
-    Dialog.PromptAnyKeyToContinue();
+    _userInputService.UserInputContinue();
   }
   public void OptionMenu(ConsoleKey pressedKey)
   {
@@ -84,7 +69,7 @@ public class MenuDialog(Dialog dialog, IFileServices fileServices)
         break;
       default:
         Console.WriteLine("Invalid option!");
-        Dialog.PromptAnyKeyToContinue();
+        _userInputService.UserInputContinue();
         break;
     }
   }

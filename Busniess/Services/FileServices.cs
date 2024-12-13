@@ -17,9 +17,9 @@ namespace Busniess.Services
       {
         if (!File.Exists(_filePath)) return [];
 
-        string users = File.ReadAllText(_filePath);
-        var userList = JsonSerializer.Deserialize<List<UserModel>>(users, _options) ?? [];
-        return userList.Cast<IUserModel>().ToList();
+        string json = File.ReadAllText(_filePath);
+        var userList = JsonSerializer.Deserialize<List<UserModel>>(json, _options) ?? [];
+        return userList;
       }
       catch (Exception ex)
       {
@@ -27,12 +27,12 @@ namespace Busniess.Services
         return [];
       }
     }
-    public bool SaveToFile(List<IUserModel> users)
+    public bool SaveToFile(IUserModel users)
     {
       try
       {
         List<IUserModel> exsistingUsers = LoadFromFile().ToList();
-        exsistingUsers.AddRange(users);
+        exsistingUsers.Add(users);
 
         if (!Directory.Exists(_directoryPath))
           Directory.CreateDirectory(_directoryPath);

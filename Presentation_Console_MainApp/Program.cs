@@ -5,6 +5,8 @@ using Busniess.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Presentation_Console_MainApp.Dialog;
+using Presentation_Console_MainApp.Interfaces;
+using Presentation_Console_MainApp.Services;
 
 var host = Host.CreateDefaultBuilder()
   .ConfigureServices((context, service) =>
@@ -16,10 +18,11 @@ var host = Host.CreateDefaultBuilder()
 
       return new FileServices(directoryPath, fileName);
     });
-    service.AddScoped<Dialog>();
+    service.AddScoped<IDialog, Dialog>();
     service.AddScoped<MenuDialog>();
     service.AddScoped<IUserFactory, UserFactory>();
     service.AddScoped<IUserModel, UserModel>();
+    service.AddScoped<IUserInputService, UserInputService>();
   }).Build();
 
 using (var scope = host.Services.CreateScope())

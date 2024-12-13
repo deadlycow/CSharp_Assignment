@@ -2,7 +2,7 @@
 using Busniess.Interfaces;
 using Moq;
 
-namespace TestProjectConsole.Interfaces_Tests;
+namespace TestProject_Busniess.Interfaces_Tests;
 public class IUserFactory_Test
 {
   private readonly IUserFactory _userFactory;

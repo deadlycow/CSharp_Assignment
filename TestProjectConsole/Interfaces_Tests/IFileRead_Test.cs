@@ -1,7 +1,7 @@
 ﻿using Busniess.Interfaces;
 using Moq;
 
-namespace TestProjectConsole.Interfaces_Tests;
+namespace TestProject_Busniess.Interfaces_Tests;
 public class IFileRead_Test
 {
   private readonly IFileRead _fileRead;

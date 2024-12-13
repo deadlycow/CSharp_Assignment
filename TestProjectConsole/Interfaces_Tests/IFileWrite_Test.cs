@@ -1,7 +1,7 @@
 ﻿using Busniess.Interfaces;
 using Moq;
 
-namespace TestProjectConsole.Interfaces_Tests;
+namespace TestProject_Busniess.Interfaces_Tests;
 public class IFileWrite_Test
 {
   private readonly IFileWrite _fileWrite;
@@ -9,21 +9,18 @@ public class IFileWrite_Test
   {
 
     var fileWriteMock = new Mock<IFileWrite>();
-    fileWriteMock.Setup(fw => fw.SaveToFile(It.Is<List<IUserModel>>(l => l.Count() > 0))).Returns(true);
-    fileWriteMock.Setup(fw => fw.SaveToFile(It.Is<List<IUserModel>>(l => l.Count() == 0))).Returns(false);
+    fileWriteMock.Setup(fw => fw.SaveToFile(It.IsAny<IUserModel>())).Returns(true);
+    fileWriteMock.Setup(fw => fw.SaveToFile(null!)).Returns(false);
 
     _fileWrite = fileWriteMock.Object;
   }
 
   [Fact]
-  public void SaveToFile_ShouldReturnTrue_WhenListIsNotEmpty()
+  public void SaveToFile_ShouldReturnTrue_WhenUserModelIsValid()
   {
     //Arrange
-    var userModels = new List<IUserModel>
-    {
-      new Mock<IUserModel>().Object,
-    };
-
+    var userModels = new Mock<IUserModel>().Object;
+    
     //Act
     var result = _fileWrite.SaveToFile(userModels);
 
@@ -32,13 +29,10 @@ public class IFileWrite_Test
   }
 
   [Fact]
-  public void SaveToFile_ShouldReturnFalse_WhenListIsEmpty()
+  public void SaveToFile_ShouldReturnFalse_WhenUserModelIsNull()
   {
-    //Arrange
-    var emptyList = new List<IUserModel>();
-
     //Act
-    var result = _fileWrite.SaveToFile(emptyList);
+    var result = _fileWrite.SaveToFile(null!);
 
     //Assert
     Assert.False(result);

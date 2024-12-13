@@ -2,5 +2,5 @@
 
 public interface IFileWrite
 {
-  bool SaveToFile(List<IUserModel> users);
+  bool SaveToFile(IUserModel users);
 }

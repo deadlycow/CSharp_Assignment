@@ -1,19 +1,20 @@
-﻿using Busniess.Interfaces;
+﻿using Busniess.Helpers;
+using Busniess.Interfaces;
+using Presentation_Console_MainApp.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
 namespace Presentation_Console_MainApp.Dialog;
-public class Dialog(IUserFactory userFactory)
+public class Dialog(IUserFactory userFactory, IUserInputService userInputService, IFileServices fileServices) : IDialog
 {
   private readonly IUserFactory _userFactory = userFactory;
+  private readonly IUserInputService _userInputService = userInputService;
+  private readonly IFileServices _fileServices = fileServices;
 
-  public static ConsoleKey PromptUserMenuChoice()
-  {
-    Console.Write("Press a key to select an option: ");
-    return Console.ReadKey(true).Key;
-  }
-  public IUserModel GatherUserDetails()
+
+  public void GatherUserDetails()
   {
     IUserModel user = _userFactory.Create();
+    user.Id = IdGenerator.GenerateId();
 
     user.FirstName = PromptAndValidateString("First name: ", nameof(user.FirstName));
     user.LastName = PromptAndValidateString("Last name: ", nameof(user.LastName));
@@ -22,40 +23,36 @@ public class Dialog(IUserFactory userFactory)
     user.Address = PromptAndValidateString("Address: ", nameof(user.Address));
     user.Zip = PromptAndValidateInt("Zip Code: ", nameof(user.Zip));
     user.City = PromptAndValidateString("City: ", nameof(user.City));
+    if (_fileServices.SaveToFile(user))
+      Console.WriteLine("Contact added successfully.");
 
-    return user;
+    _userInputService.UserInputKey();
   }
   public string PromptAndValidateString(string prompt, string propertyName)
   {
     while (true)
     {
       Console.Write(prompt);
-      var input = Console.ReadLine() ?? string.Empty;
-      List<ValidationResult> results = [];
+      var input = _userInputService.UserInputString();
 
+      List<ValidationResult> results = [];
       var context = new ValidationContext(_userFactory.Create()) { MemberName = propertyName };
+
       if (Validator.TryValidateProperty(input, context, results))
-      {
-        return input;
-      }
+        return input!;
+
       Console.WriteLine($"{results[0].ErrorMessage} Please try again.");
     }
   }
-  public int PromptAndValidateInt(string prompt, string propertyName)
+  public int? PromptAndValidateInt(string prompt, string propertyName)
   {
     while (true)
     {
       Console.Write(prompt);
-      var input = Console.ReadLine() ?? string.Empty;
-      
-      if (!int.TryParse(input, out int value))
-      {
-        Console.WriteLine("Invalid input. ONLY numbers.");
-        continue;
-      }
+      var value = _userInputService.UserInputInt();
 
       List<ValidationResult> results = [];
-      var context = new ValidationContext(_userFactory.Create()) { MemberName = propertyName};
+      var context = new ValidationContext(_userFactory.Create()) { MemberName = propertyName };
       if (Validator.TryValidateProperty(value, context, results))
       {
         return value;
@@ -63,14 +60,14 @@ public class Dialog(IUserFactory userFactory)
       Console.WriteLine($"{results[0].ErrorMessage} Please try again");
     }
   }
-  public static bool PromptForAdditinalUsers()
+  public bool PromptForAdditinalUsers()
   {
     Console.WriteLine("\nAdd more contacts...? (Y/N)");
-    return Console.ReadKey(true).Key == ConsoleKey.Y;
+    return _userInputService.UserInputKey() == ConsoleKey.Y;
   }
-  public static void PromptAnyKeyToContinue()
+  public ConsoleKey PromptUserMenuChoice()
   {
-    Console.Write("Press any key to continue...");
-    Console.ReadKey();
+    Console.Write("Press a key to select an option: ");
+    return _userInputService.UserInputKey();
   }
 }
