@@ -60,14 +60,4 @@ public class Dialog(IUserFactory userFactory, IUserInputService userInputService
       Console.WriteLine($"{results[0].ErrorMessage} Please try again");
     }
   }
-  public bool PromptForAdditinalUsers()
-  {
-    Console.WriteLine("\nAdd more contacts...? (Y/N)");
-    return _userInputService.UserInputKey() == ConsoleKey.Y;
-  }
-  public ConsoleKey PromptUserMenuChoice()
-  {
-    Console.Write("Press a key to select an option: ");
-    return _userInputService.UserInputKey();
-  }
 }

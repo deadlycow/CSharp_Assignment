@@ -7,6 +7,5 @@ namespace Presentation_Console_MainApp.Interfaces
     void GatherUserDetails();
     int? PromptAndValidateInt(string prompt, string propertyName);
     string PromptAndValidateString(string prompt, string propertyName);
-    bool PromptForAdditinalUsers();
   }
 }
