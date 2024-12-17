@@ -1,25 +1,26 @@
 ﻿using Busniess.Interfaces;
 using Busniess.Models;
 using System.Diagnostics;
-using System.Text.Json;
 
 namespace Busniess.Services
 {
-  public class FileServices(string directoryPath, string filePath) : IFileServices
+  public class FileServices(string directoryPath, string filePath, IFileHandler fileHandler, ISerializerService serializer) : IFileServices
   {
+    private readonly IFileHandler _fileHandler = fileHandler;
+    private readonly ISerializerService _serializer = serializer;
+
     private readonly string _directoryPath = directoryPath;
     private readonly string _filePath = Path.Combine(directoryPath, filePath);
-    private readonly JsonSerializerOptions _options = new() { WriteIndented = true };
+    
 
     public IEnumerable<IUserModel> LoadFromFile()
     {
       try
       {
-        if (!File.Exists(_filePath)) return [];
+        if (!_fileHandler.FileExists(_filePath)) return [];
 
-        string json = File.ReadAllText(_filePath);
-        var userList = JsonSerializer.Deserialize<List<UserModel>>(json, _options) ?? [];
-        return userList;
+        string json = _fileHandler.ReadFile(_filePath);
+        return _serializer.Deserialize<List<UserModel>>(json) ?? [];
       }
       catch (Exception ex)
       {
@@ -27,22 +28,22 @@ namespace Busniess.Services
         return [];
       }
     }
-    public bool SaveToFile(IUserModel users)
+    public bool SaveToFile(IUserModel user)
     {
       try
       {
-        List<IUserModel> exsistingUsers = LoadFromFile().ToList();
-        exsistingUsers.Add(users);
+        var users = LoadFromFile().ToList();
+        users.Add(user);
 
-        if (!Directory.Exists(_directoryPath))
-          Directory.CreateDirectory(_directoryPath);
+        _fileHandler.DirectoryExists(_directoryPath);
 
-        var json = JsonSerializer.Serialize(exsistingUsers, _options);
-        File.WriteAllText(_filePath, json);
+        var json = _serializer.Serialize(users);
+        _fileHandler.WriteFile(_filePath, json);
         return true;
       }
-      catch
+      catch (Exception ex)
       {
+        Debug.WriteLine(ex.Message);
         return false;
       }
     }
