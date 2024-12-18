@@ -9,7 +9,6 @@ public class SerializerService : ISerializerService
   {
     return JsonSerializer.Deserialize<T>(json, _options);
   }
-
   public string Serialize<T>(T data)
   {
     return JsonSerializer.Serialize(data, _options);

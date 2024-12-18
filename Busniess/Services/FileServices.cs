@@ -12,7 +12,6 @@ namespace Busniess.Services
     private readonly string _directoryPath = directoryPath;
     private readonly string _filePath = Path.Combine(directoryPath, filePath);
     
-
     public IEnumerable<IUserModel> LoadFromFile()
     {
       try
