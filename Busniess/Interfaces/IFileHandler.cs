@@ -5,4 +5,5 @@ public interface IFileHandler
   string ReadFile(string path);
   void WriteFile(string path, string content);
   bool DirectoryExists(string path);
+  void CreateDirectory(string path);
 }

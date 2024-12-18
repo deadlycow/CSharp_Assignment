@@ -4,15 +4,15 @@ using Moq;
 namespace TestProject_Busniess.Interfaces_Tests;
 public class IFileWrite_Test
 {
-  private readonly IFileWrite _fileWrite;
+  private readonly IFileServices _fileServices;
   public IFileWrite_Test()
   {
 
-    var fileWriteMock = new Mock<IFileWrite>();
-    fileWriteMock.Setup(fw => fw.SaveToFile(It.IsAny<IUserModel>())).Returns(true);
-    fileWriteMock.Setup(fw => fw.SaveToFile(null!)).Returns(false);
+    var mockFileService = new Mock<IFileServices>();
+    mockFileService.Setup(fs => fs.SaveToFile(It.IsAny<IUserModel>())).Returns(true);
+    mockFileService.Setup(fs => fs.SaveToFile(null!)).Returns(false);
 
-    _fileWrite = fileWriteMock.Object;
+    _fileServices = mockFileService.Object;
   }
 
   [Fact]
@@ -22,7 +22,7 @@ public class IFileWrite_Test
     var userModels = new Mock<IUserModel>().Object;
     
     //Act
-    var result = _fileWrite.SaveToFile(userModels);
+    var result = _fileServices.SaveToFile(userModels);
 
     //Assert 
     Assert.True(result);
@@ -32,7 +32,7 @@ public class IFileWrite_Test
   public void SaveToFile_ShouldReturnFalse_WhenUserModelIsNull()
   {
     //Act
-    var result = _fileWrite.SaveToFile(null!);
+    var result = _fileServices.SaveToFile(null!);
 
     //Assert
     Assert.False(result);

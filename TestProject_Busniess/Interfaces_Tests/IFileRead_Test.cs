@@ -4,7 +4,7 @@ using Moq;
 namespace TestProject_Busniess.Interfaces_Tests;
 public class IFileRead_Test
 {
-  private readonly IFileRead _fileRead;
+  private readonly IFileServices _fileServices;
   public IFileRead_Test()
   {
     var userModels = new List<IUserModel>
@@ -13,17 +13,17 @@ public class IFileRead_Test
       new Mock<IUserModel>().Object,
     };
 
-    var fileReadMock = new Mock<IFileRead>();
-    fileReadMock.Setup(fr => fr.LoadFromFile()).Returns(userModels);
+    var mockFileService = new Mock<IFileServices>();
+    mockFileService.Setup(fs => fs.LoadFromFile()).Returns(userModels);
 
-    _fileRead = fileReadMock.Object;
+    _fileServices = mockFileService.Object;
   }
 
   [Fact]
   public void LoadFromFile_ShouldReturnIEnumerableOfIUserModel()
   {
     //Act
-    var result = _fileRead.LoadFromFile();
+    var result = _fileServices.LoadFromFile();
     //Assert
     Assert.IsAssignableFrom<IEnumerable<IUserModel>>(result);
   }

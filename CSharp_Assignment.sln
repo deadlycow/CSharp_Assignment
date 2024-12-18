@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Busniess", "Busniess\Busnie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation_Console_MainApp", "Presentation_Console_MainApp\Presentation_Console_MainApp.csproj", "{10DC37CC-A3DC-4D71-8A85-56D5873D6F58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject_Busniess", "TestProjectConsole\TestProject_Busniess.csproj", "{660E88A6-A21B-4346-A724-1C50B81DAA17}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject_Busniess", "TestProject_Busniess\TestProject_Busniess.csproj", "{660E88A6-A21B-4346-A724-1C50B81DAA17}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation_Maui_MainApp", "Presentation_Maui_MainApp\Presentation_Maui_MainApp.csproj", "{4F9F7674-9612-4F88-B2D7-4441B261F29A}"
 EndProject

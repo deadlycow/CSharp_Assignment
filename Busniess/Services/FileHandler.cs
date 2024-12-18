@@ -8,7 +8,7 @@ public class FileHandler : IFileHandler
     try
     {
       if (!Directory.Exists(path))
-        Directory.CreateDirectory(path);
+        CreateDirectory(path);
       return true;
     }
     catch (Exception ex)
@@ -17,10 +17,8 @@ public class FileHandler : IFileHandler
       return false;
     }
   }
-
+  public void CreateDirectory(string path) => Directory.CreateDirectory(path);
   public bool FileExists(string path) => File.Exists(path);
-
   public string ReadFile(string path) => File.ReadAllText(path);
-
   public void WriteFile(string path, string content) => File.WriteAllText(path, content);
 }
