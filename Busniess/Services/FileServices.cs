@@ -11,7 +11,28 @@ namespace Busniess.Services
 
     private readonly string _directoryPath = directoryPath;
     private readonly string _filePath = Path.Combine(directoryPath, filePath);
-    
+
+    public bool DeleteUser(IUserModel user)
+    {
+      try
+      {
+        var users = LoadFromFile().ToList();
+        var userToRemove = users.FirstOrDefault(x => x.Id == user.Id);
+
+        if (userToRemove == null) return false;
+        users.Remove(userToRemove);
+
+        var json = _serializer.Serialize(users);
+        _fileHandler.WriteFile(_filePath, json);
+        return true;
+      }
+      catch (Exception ex)
+      {
+        Debug.WriteLine(ex.Message);
+        return false;
+      }
+    }
+
     public IEnumerable<IUserModel> LoadFromFile()
     {
       try
@@ -35,6 +56,34 @@ namespace Busniess.Services
         users.Add(user);
 
         _fileHandler.DirectoryExists(_directoryPath);
+
+        var json = _serializer.Serialize(users);
+        _fileHandler.WriteFile(_filePath, json);
+        return true;
+      }
+      catch (Exception ex)
+      {
+        Debug.WriteLine(ex.Message);
+        return false;
+      }
+    }
+
+    public bool UpdateUser(IUserModel user)
+    {
+      try
+      {
+        var users = LoadFromFile().ToList();
+        var userToUpdate = users.FirstOrDefault(x => x.Id == user.Id);
+
+        if (userToUpdate == null) return false;
+
+        userToUpdate.FirstName = user.FirstName;
+        userToUpdate.LastName = user.LastName;
+        userToUpdate.Email = user.Email;
+        userToUpdate.PhoneNumber = user.PhoneNumber;
+        userToUpdate.Address = user.Address;
+        userToUpdate.Zip = user.Zip;
+        userToUpdate.City = user.City;
 
         var json = _serializer.Serialize(users);
         _fileHandler.WriteFile(_filePath, json);
