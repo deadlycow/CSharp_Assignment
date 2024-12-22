@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Maui.LifecycleEvents;
 
 namespace Presentation_Maui_MainApp
 {
@@ -14,7 +15,6 @@ namespace Presentation_Maui_MainApp
           fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
           fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
         });
-
 #if DEBUG
   		builder.Logging.AddDebug();
 #endif

@@ -8,8 +8,11 @@
     Title="Presentation_Maui_MainApp">
 
     <ShellContent
-        Title="Home"
+        Title="Hejsan"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
-
+    <ShellContent
+        Title="Show All Contacts"
+        ContentTemplate="{DataTemplate local:ShowAllPage}"
+        Route="ShowAllPage" />
 </Shell>
