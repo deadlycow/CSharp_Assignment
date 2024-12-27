@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Presentation_Maui_MainApp.MainPage">
 
-    <Grid RowDefinitions="Auto, Auto" Padding="10" RowSpacing="10">
-        <Button Text="All Contacts" Grid.Row="0"/>
-        <Button Text="Add new contact" Grid.Row="1"/>
-    </Grid>    
+    <Grid RowDefinitions="auto, *, *, auto" Padding="20" RowSpacing="20">
+        <Label Text="Main menu" Grid.Row="0" HorizontalOptions="Center" FontSize="22" FontAttributes="Bold"/>
+        <Button x:Name="Btn_AddNewContact" Clicked="Btn_AddNewContact_Clicked" Text="Add new contact" Grid.Row="1" FontSize="40" FontAttributes="Bold"/>
+        <Button x:Name="Btn_AllContacts" Clicked="Btn_AllContacts_Clicked" Text="All Contacts" Grid.Row="2" FontSize="40" FontAttributes="Bold"/>
+        <Label Text="made by Andreas Karlsson" Grid.Row="3" HorizontalTextAlignment="Center" FontSize="12"/>
+    </Grid>
 </ContentPage>

@@ -1,0 +1,162 @@
+[
+  {
+    "Id": "b18983f5-eee5-4b53-99b1-b621fe846e58",
+    "FirstName": "hehehe",
+    "LastName": "hehehe",
+    "Email": "heh@heh.se",
+    "PhoneNumber": 707878873,
+    "Address": "hehe",
+    "Zip": 88392,
+    "City": "hehehe"
+  },
+  {
+    "Id": "e6a6b85e-6de9-41f5-8bf9-d09af3e16ead",
+    "FirstName": "Andreas",
+    "LastName": "Karlsson",
+    "Email": "andreas@gmail.com",
+    "PhoneNumber": 293847,
+    "Address": "H\u00E4r",
+    "Zip": 23798,
+    "City": "\u00D6rebro"
+  },
+  {
+    "Id": "51ab5bab-7186-49b2-9cb8-5556ecd1d604",
+    "FirstName": "Bj\u00F6rn",
+    "LastName": "Gunnarsson",
+    "Email": "bjo@sj.se",
+    "PhoneNumber": 9238742,
+    "Address": "Borta",
+    "Zip": 23488,
+    "City": "Oden"
+  },
+  {
+    "Id": "79fb2b95-8510-45b8-8698-4d8c1823aba2",
+    "FirstName": "Kalle",
+    "LastName": "Anka",
+    "Email": "kalle@anka.se",
+    "PhoneNumber": 9999888,
+    "Address": "ank v\u00E4gen",
+    "Zip": 22338,
+    "City": "Ankeborg"
+  },
+  {
+    "Id": "9f6d63b9-cc60-4039-ac8d-d5452d229300",
+    "FirstName": "Jonas",
+    "LastName": "Andersson",
+    "Email": "andersson@jonas.se",
+    "PhoneNumber": 988822377,
+    "Address": "Borta gatan",
+    "Zip": 28789,
+    "City": "Stockholm"
+  },
+  {
+    "Id": "303b8e02-df37-4aee-8add-fb4a87ff8a7f",
+    "FirstName": "Greger",
+    "LastName": "Gunnarsson",
+    "Email": "greger@greger.se",
+    "PhoneNumber": 78899992,
+    "Address": "Gregersgatan 2",
+    "Zip": 23322,
+    "City": "G\u00F6teborg"
+  },
+  {
+    "Id": "96f880be-051b-4430-9aeb-beff95b41882",
+    "FirstName": "Koko",
+    "LastName": "Kokosan",
+    "Email": "ko@ko.cok",
+    "PhoneNumber": 889293,
+    "Address": "Kokogatan",
+    "Zip": 88300,
+    "City": "\u00D6rebro"
+  },
+  {
+    "Id": "cf712383-c3c1-4844-9e65-be49a4c69727",
+    "FirstName": "Buttman",
+    "LastName": "Buttington",
+    "Email": "buttman@buttington.com",
+    "PhoneNumber": 112,
+    "Address": "Butting Town",
+    "Zip": 98987,
+    "City": "ButtButt"
+  },
+  {
+    "Id": "b3e5cbf5-de4e-4398-bc58-1178e55c9035",
+    "FirstName": "Henrik",
+    "LastName": "Karlsson",
+    "Email": "hen@rik.se",
+    "PhoneNumber": 88838292,
+    "Address": "Borinsv\u00E4g",
+    "Zip": 71595,
+    "City": "Odensbacken"
+  },
+  {
+    "Id": "1dce42cf-920f-4320-91b3-2ac5c25da54c",
+    "FirstName": "Bannan",
+    "LastName": "Bannanson",
+    "Email": "ban@nnan.son",
+    "PhoneNumber": 708822222,
+    "Address": "Banannv\u00E4gen",
+    "Zip": 822222,
+    "City": "Bannanstan"
+  },
+  {
+    "Id": "d1c1423c-92c6-46f2-8f7a-6ac58902ec89",
+    "FirstName": "Faan",
+    "LastName": "Faanson",
+    "Email": "fan@fan.fan",
+    "PhoneNumber": 792222222,
+    "Address": "Fann v\u00E4gen",
+    "Zip": 23223,
+    "City": "Fanfan stan"
+  },
+  {
+    "Id": "4f06b260-bd7d-4045-b8f0-9d568b9e001d",
+    "FirstName": "Nytt",
+    "LastName": "Test",
+    "Email": "test@test.test",
+    "PhoneNumber": 709823443,
+    "Address": "testv\u00E4gen",
+    "Zip": 28138,
+    "City": "TestTest"
+  },
+  {
+    "Id": "50299c69-a441-469d-8e16-320ec25daa56",
+    "FirstName": "Pan",
+    "LastName": "Pan",
+    "Email": "Pan@pan.pan",
+    "PhoneNumber": 702323232,
+    "Address": "Pan",
+    "Zip": 23472,
+    "City": ""
+  },
+  {
+    "Id": "5fdf5f67-078d-4afa-9b26-56e90207f6a3",
+    "FirstName": "Greger",
+    "LastName": "Greger",
+    "Email": "gre@gre.ger",
+    "PhoneNumber": 0,
+    "Address": "",
+    "Zip": 0,
+    "City": ""
+  },
+  {
+    "Id": "11881e6f-423f-41c3-8bfa-69a306b4a215",
+    "FirstName": "Alice",
+    "LastName": "Alice",
+    "Email": "alice@alice.alice",
+    "PhoneNumber": 709878787,
+    "Address": "alice",
+    "Zip": 87878,
+    "City": "Alice"
+  },
+  {
+    "Id": "9c08d8d3-7b57-44d4-9b12-877622b1f32f",
+    "FirstName": "Karin",
+    "LastName": "Karin",
+    "Email": "karin@karin.com",
+    "PhoneNumber": 708978787,
+    "Address": "Karins v\u00E4g",
+    "Zip": 83929,
+    "City": "Karin stad"
+  }
+]

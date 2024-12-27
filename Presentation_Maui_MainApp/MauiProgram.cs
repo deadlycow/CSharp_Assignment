@@ -1,5 +1,10 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Maui.LifecycleEvents;
+﻿using Busniess.Factories;
+using Busniess.Interfaces;
+using Busniess.Models;
+using Busniess.Services;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Presentation_Maui_MainApp.ViewModels;
 
 namespace Presentation_Maui_MainApp
 {
@@ -15,8 +20,27 @@ namespace Presentation_Maui_MainApp
           fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
           fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
         });
+
+      builder.Services.AddSingleton<ListAllContactsViewModel>();
+      //builder.Services.AddSingleton<ShowAllPage>();
+      //builder.Services.AddSingleton<MainPage>();
+      builder.Services.AddSingleton<IUserModel, UserModel>();
+      builder.Services.AddSingleton<IFileHandler, FileHandler>();
+      builder.Services.AddScoped<ISerializerService, SerializerService>();
+      builder.Services.AddScoped<IFileHandler, FileHandler>();
+      builder.Services.AddScoped<IUserFactory, UserFactory>();
+      builder.Services.AddScoped<IFileServices>(provider =>
+      {
+        var fileHandler = provider.GetRequiredService<IFileHandler>();
+        var serializer = provider.GetRequiredService<ISerializerService>();
+        //var options = provider.GetRequiredService<IOptions<FileServiceOptions>>().Value;
+
+        return new FileServices("Data", "users.json", fileHandler, serializer);
+      });
+      //builder.Services.AddScoped<IFileServices, FileServices>();
+
 #if DEBUG
-  		builder.Logging.AddDebug();
+      builder.Logging.AddDebug();
 #endif
 
       return builder.Build();

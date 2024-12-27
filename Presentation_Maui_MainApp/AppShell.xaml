@@ -4,15 +4,19 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Presentation_Maui_MainApp"
-    Shell.FlyoutBehavior="Flyout"
-    Title="Presentation_Maui_MainApp">
+    xmlns:pages="clr-namespace:Presentation_Maui_MainApp.Pages"
+    
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False"
+    Title="Presentation_Maui_MainApp"
+    >
 
-    <ShellContent
-        Title="Hejsan"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-    <ShellContent
-        Title="Show All Contacts"
-        ContentTemplate="{DataTemplate local:ShowAllPage}"
-        Route="ShowAllPage" />
+    <ShellContent Title="MainPage" Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}"/>
+    <ShellContent Title="Add new contact" Route="AddNewContact_Page" ContentTemplate="{DataTemplate pages:AddNewContact_Page}"/>
+    <ShellContent Title="List all contacts" Route="ListAllContacts_Page" ContentTemplate="{DataTemplate pages:ListAllContacts_Page}"/>
+
+
+
 </Shell>
+
+ 
