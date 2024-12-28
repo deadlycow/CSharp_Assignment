@@ -2,21 +2,40 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Presentation_Maui_MainApp.Pages.ListAllContacts_Page"
-             
+
              xmlns:models="clr-namespace:Busniess.Models;assembly=Busniess"
              xmlns:viewmodels="clr-namespace:Presentation_Maui_MainApp.ViewModels"
              x:DataType="{x:Type viewmodels:ListAllContactsViewModel}"
              
              Title="ListAllContacts_Page">
 
-    <Grid RowDefinitions="auto, *, *, auto" Padding="20" RowSpacing="20">
+    <Grid RowDefinitions="auto, *, auto, auto" Padding="20" RowSpacing="20">
         <Label Text="All Contacts" Grid.Row="0" HorizontalOptions="Center" FontSize="22" FontAttributes="Bold"/>
         <CollectionView Grid.Row="1" ItemsSource="{Binding UserModels}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type models:UserModel}">
-                    <HorizontalStackLayout>
-                        <Label Text="{Binding FirstName}" />
-                    </HorizontalStackLayout>
+                    <Border Margin="5" Padding="10" StrokeThickness="1" Stroke="Orange">
+                        <Grid ColumnDefinitions="auto, *, auto, auto" ColumnSpacing="5" RowDefinitions="auto, auto, auto, auto, auto">
+                            <Label Text="{Binding FullName}" FontSize="18" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+                            <Label Text="Email:" FontAttributes="Italic" Grid.Row="1" Grid.Column="0" />
+                            <Label Text="{Binding Email}" Grid.Row="1" Grid.Column="1" />
+                            
+                            <Label Text="Phone:" FontAttributes="Italic" Grid.Row="2" Grid.Column="0" />
+                            <Label Text="{Binding PhoneNumber}" Grid.Row="2" Grid.Column="1" />
+                            
+                            <Label Text="City:" Grid.Row="3" Grid.Column="0"/>
+                            <Label Text="{Binding City}" Grid.Row="3" Grid.Column="1"/>
+                            
+                            <Label Text="Zip:" Grid.Row="4" Grid.Column="0"/>
+                            <Label Text="{Binding Zip}" Grid.Row="4" Grid.Column="1"/>
+                            
+                            <Button Text="Update" Grid.RowSpan="5" Grid.Column="2"/>
+                            <Button Text="Delete" Grid.RowSpan="5" Grid.Column="3" 
+                                    CommandParameter="{Binding .}" 
+                                    Command="{Binding Path=RemoveUserCommand, Source={RelativeSource AncestorType={x:Type viewmodels:ListAllContactsViewModel}}}"/>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

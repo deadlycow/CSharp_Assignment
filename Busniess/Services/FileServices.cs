@@ -68,6 +68,24 @@ namespace Busniess.Services
       }
     }
 
+    public bool UpdateFile(List<IUserModel> users)
+    {
+      try
+      {
+        _fileHandler.DirectoryExists(_directoryPath);
+
+        var json = _serializer.Serialize(users);
+        _fileHandler.WriteFile(_filePath, json);
+        return true;
+      }
+      catch (Exception ex)
+      {
+        Debug.WriteLine(ex.Message);
+        return false;
+      }
+
+    }
+
     public bool UpdateUser(IUserModel user)
     {
       try

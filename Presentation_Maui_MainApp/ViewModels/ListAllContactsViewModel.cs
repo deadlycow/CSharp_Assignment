@@ -1,22 +1,30 @@
 ﻿using Busniess.Interfaces;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 
 namespace Presentation_Maui_MainApp.ViewModels;
 public partial class ListAllContactsViewModel : ObservableObject
 {
   public readonly IFileServices _fileService;
-  public ListAllContactsViewModel(IFileServices fileServices, IUserModel userModel)
+  public ListAllContactsViewModel(IFileServices fileServices)
   {
-    _userModel = userModel;
     _fileService = fileServices;
-    _userModels = new ObservableCollection<IUserModel>(_fileService.LoadFromFile());
+    UserModels = new ObservableCollection<IUserModel>(_fileService.LoadFromFile());
   }
-
-  [ObservableProperty]
-  private IUserModel _userModel;
-
   [ObservableProperty]
   private ObservableCollection<IUserModel> _userModels;
 
+  [RelayCommand]
+  public void RemoveUser(IUserModel user)
+  {
+    UserModels.Remove(user);
+
+    var userList = UserModels.ToList();
+    var updateSuccess = _fileService.UpdateFile(userList);
+    if (!updateSuccess)
+    {
+      throw new InvalidOperationException("Failed to update the file.");
+    }
+  }
 }
