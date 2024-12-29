@@ -10,17 +10,17 @@ public partial class ListAllContactsViewModel : ObservableObject
   public ListAllContactsViewModel(IFileServices fileServices)
   {
     _fileService = fileServices;
-    UserModels = new ObservableCollection<IUserModel>(_fileService.LoadFromFile());
+    Users = new ObservableCollection<IUserModel>(_fileService.LoadFromFile());
   }
   [ObservableProperty]
-  private ObservableCollection<IUserModel> _userModels;
-
+  public partial ObservableCollection<IUserModel> Users { get; set; }
+  
   [RelayCommand]
   public void RemoveUser(IUserModel user)
   {
-    UserModels.Remove(user);
+    Users.Remove(user);
 
-    var userList = UserModels.ToList();
+    var userList = Users.ToList();
     var updateSuccess = _fileService.UpdateFile(userList);
     if (!updateSuccess)
     {

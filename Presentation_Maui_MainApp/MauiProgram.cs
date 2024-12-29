@@ -22,8 +22,7 @@ namespace Presentation_Maui_MainApp
         });
 
       builder.Services.AddSingleton<ListAllContactsViewModel>();
-      //builder.Services.AddSingleton<ShowAllPage>();
-      //builder.Services.AddSingleton<MainPage>();
+      builder.Services.AddSingleton<AddNewContactViewModel>();
       builder.Services.AddSingleton<IUserModel, UserModel>();
       builder.Services.AddSingleton<IFileHandler, FileHandler>();
       builder.Services.AddScoped<ISerializerService, SerializerService>();
@@ -37,7 +36,6 @@ namespace Presentation_Maui_MainApp
 
         return new FileServices("Data", "users.json", fileHandler, serializer);
       });
-      //builder.Services.AddScoped<IFileServices, FileServices>();
 
 #if DEBUG
       builder.Logging.AddDebug();

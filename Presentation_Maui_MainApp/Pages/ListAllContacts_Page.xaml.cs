@@ -4,10 +4,10 @@ namespace Presentation_Maui_MainApp.Pages;
 
 public partial class ListAllContacts_Page : ContentPage
 {
-	public ListAllContacts_Page(ListAllContactsViewModel listAllContactsViewModel)
+	public ListAllContacts_Page(ListAllContactsViewModel viewModel)
 	{
 		InitializeComponent();
-		BindingContext = listAllContactsViewModel;
+		BindingContext = viewModel;
 	}
 
   private async void Btn_Back_Clicked(object sender, EventArgs e)

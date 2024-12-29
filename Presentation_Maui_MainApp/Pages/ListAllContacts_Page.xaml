@@ -11,7 +11,7 @@
 
     <Grid RowDefinitions="auto, *, auto, auto" Padding="20" RowSpacing="20">
         <Label Text="All Contacts" Grid.Row="0" HorizontalOptions="Center" FontSize="22" FontAttributes="Bold"/>
-        <CollectionView Grid.Row="1" ItemsSource="{Binding UserModels}">
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Users}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type models:UserModel}">
                     <Border Margin="5" Padding="10" StrokeThickness="1" Stroke="Orange">

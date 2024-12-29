@@ -2,12 +2,34 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Presentation_Maui_MainApp.Pages.AddNewContact_Page"
+             
+             xmlns:models="clr-namespace:Busniess.Models;assembly=Busniess"
+             xmlns:viewmodels="clr-namespace:Presentation_Maui_MainApp.ViewModels"
+             x:DataType="{x:Type viewmodels:AddNewContactViewModel}"
              Title="AddNewContact_Page">
-    
-    <Grid RowDefinitions="auto, *, auto" Padding="20" RowSpacing="20">
-        <Label Text="Create new contact" Grid.Row="0" HorizontalOptions="Center" FontSize="22" FontAttributes="Bold"/>
 
-        <Button Text="Back" x:Name="Btn_Back" Clicked="Btn_Back_Clicked" Grid.Row="1" FontSize="40" FontAttributes="Bold"/>
+    <Grid RowDefinitions="auto, *, auto, auto, auto" Padding="20" RowSpacing="20">
+        <Label Text="Create new contact" Grid.Row="0" HorizontalOptions="Center" FontSize="22" FontAttributes="Bold"/>
+        <VerticalStackLayout Grid.Row="1">
+            <Grid ColumnDefinitions="*, 2*">
+                <Label Text="Name" VerticalTextAlignment="Center" FontSize="20"/>
+                <Entry Text="{Binding UserForm.FirstName}" Grid.Column="1"/>
+            </Grid>
+            <Grid ColumnDefinitions="*, 2*">
+                <Label Text="Lastname" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="20"/>
+                <Entry Text="{Binding UserForm.LastName}" Grid.Column="1"/>
+            </Grid>
+            <Grid ColumnDefinitions="*, 2*">
+                <Label Text="Phonenumber" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="20"/>
+                <Entry Text="{Binding UserForm.LastName}" Grid.Column="1"/>
+            </Grid>
+            <Grid ColumnDefinitions="*, 2*">
+                <Label Text="Lastname" VerticalTextAlignment="Center" FontSize="20"/>
+                <Entry Text="{Binding UserForm.LastName}" Grid.Column="1"/>
+            </Grid>
+        </VerticalStackLayout>
+        <Button Text="Add contact" Grid.Row="2" FontSize="40" FontAttributes="Bold"/>
+        <Button Text="Back" x:Name="Btn_Back" Clicked="Btn_Back_Clicked" Grid.Row="3" FontSize="40" FontAttributes="Bold"/>
         <Label Text="made by Andreas Karlsson" Grid.Row="4" HorizontalTextAlignment="Center" FontSize="12"/>
     </Grid>
 </ContentPage>

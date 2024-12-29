@@ -19,6 +19,9 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<LangVersion>preview</LangVersion>
+		<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
+
 
 		<!-- Display name -->
 		<ApplicationTitle>Presentation_Maui_MainApp</ApplicationTitle>
@@ -60,12 +63,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="bin - Copy\**" />
+	  <AndroidResource Remove="obj - Copy\**" />
+	  <Compile Remove="bin - Copy\**" />
+	  <Compile Remove="obj - Copy\**" />
+	  <EmbeddedResource Remove="bin - Copy\**" />
+	  <EmbeddedResource Remove="obj - Copy\**" />
+	  <MauiCss Remove="bin - Copy\**" />
+	  <MauiCss Remove="obj - Copy\**" />
+	  <MauiXaml Remove="bin - Copy\**" />
+	  <MauiXaml Remove="obj - Copy\**" />
+	  <None Remove="bin - Copy\**" />
+	  <None Remove="obj - Copy\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Remove="ViewModels\AddNewContactPage.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.21" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
 	</ItemGroup>
 
