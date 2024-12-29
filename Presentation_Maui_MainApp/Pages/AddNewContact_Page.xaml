@@ -8,28 +8,40 @@
              x:DataType="{x:Type viewmodels:AddNewContactViewModel}"
              Title="AddNewContact_Page">
 
-    <Grid RowDefinitions="auto, *, auto, auto, auto" Padding="20" RowSpacing="20">
+    <Grid RowDefinitions="auto, *, auto, auto" Padding="20" RowSpacing="20">
         <Label Text="Create new contact" Grid.Row="0" HorizontalOptions="Center" FontSize="22" FontAttributes="Bold"/>
         <VerticalStackLayout Grid.Row="1">
-            <Grid ColumnDefinitions="*, 2*">
-                <Label Text="Name" VerticalTextAlignment="Center" FontSize="20"/>
-                <Entry Text="{Binding UserForm.FirstName}" Grid.Column="1"/>
+            <Grid RowDefinitions="auto, auto">
+                <Label Text="Name" FontSize="20"/>
+                <Entry Text="{Binding UserForm.FirstName}" Grid.Row="1"/>
             </Grid>
-            <Grid ColumnDefinitions="*, 2*">
-                <Label Text="Lastname" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="20"/>
-                <Entry Text="{Binding UserForm.LastName}" Grid.Column="1"/>
+            <Grid RowDefinitions="auto, auto">
+                <Label Text="Lastname" FontSize="20"/>
+                <Entry Text="{Binding UserForm.LastName}" Grid.Row="1"/>
             </Grid>
-            <Grid ColumnDefinitions="*, 2*">
-                <Label Text="Phonenumber" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="20"/>
-                <Entry Text="{Binding UserForm.LastName}" Grid.Column="1"/>
+            <Grid RowDefinitions="auto, auto">
+                <Label Text="Email" FontSize="20"/>
+                <Entry Text="{Binding UserForm.Email}" Grid.Row="1"/>
             </Grid>
-            <Grid ColumnDefinitions="*, 2*">
-                <Label Text="Lastname" VerticalTextAlignment="Center" FontSize="20"/>
-                <Entry Text="{Binding UserForm.LastName}" Grid.Column="1"/>
+            <Grid RowDefinitions="auto, auto">
+                <Label Text="Phonenumber" FontSize="20"/>
+                <Entry Text="{Binding UserForm.PhoneNumber}" Grid.Row="1"/>
+            </Grid>
+            <Grid RowDefinitions="auto, auto">
+                <Label Text="Address" FontSize="20"/>
+                <Entry Text="{Binding UserForm.Address}" Grid.Row="1"/>
+            </Grid>
+            <Grid RowDefinitions="auto, auto" ColumnDefinitions="*, *" ColumnSpacing="10">
+                <Label Text="Zip code" VerticalTextAlignment="Center" FontSize="20"/>
+                <Entry Text="{Binding UserForm.Zip}" Grid.Row="1"/>
+                <Label Text="City" VerticalTextAlignment="Center" FontSize="20" Grid.Column="1"/>
+                <Entry Text="{Binding UserForm.City}" Grid.Row="1" Grid.Column="1" />
             </Grid>
         </VerticalStackLayout>
-        <Button Text="Add contact" Grid.Row="2" FontSize="40" FontAttributes="Bold"/>
-        <Button Text="Back" x:Name="Btn_Back" Clicked="Btn_Back_Clicked" Grid.Row="3" FontSize="40" FontAttributes="Bold"/>
+        <Grid Grid.Row="2" ColumnDefinitions="*, *" ColumnSpacing="10">
+        <Button Text="Add contact" Grid.Column="1" FontSize="30" FontAttributes="Bold"/>
+        <Button Text="Back" x:Name="Btn_Back" Clicked="Btn_Back_Clicked" FontSize="30" FontAttributes="Bold"/>
+        </Grid>
         <Label Text="made by Andreas Karlsson" Grid.Row="4" HorizontalTextAlignment="Center" FontSize="12"/>
     </Grid>
 </ContentPage>
