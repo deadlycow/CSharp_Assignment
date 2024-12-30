@@ -10,7 +10,7 @@ public partial class ListAllContactsViewModel : ObservableObject
   public ListAllContactsViewModel(IFileServices fileServices)
   {
     _fileService = fileServices;
-    Users = new ObservableCollection<IUserModel>(_fileService.LoadFromFile());
+    
   }
   [ObservableProperty]
   public partial ObservableCollection<IUserModel> Users { get; set; }
@@ -19,12 +19,10 @@ public partial class ListAllContactsViewModel : ObservableObject
   public void RemoveUser(IUserModel user)
   {
     Users.Remove(user);
-
-    var userList = Users.ToList();
-    var updateSuccess = _fileService.UpdateFile(userList);
-    if (!updateSuccess)
-    {
-      throw new InvalidOperationException("Failed to update the file.");
-    }
+    _fileService.DeleteUser(user);
+  }
+  public void UpdateList()
+  {
+    Users = new ObservableCollection<IUserModel>(_fileService.LoadFromFile());
   }
 }

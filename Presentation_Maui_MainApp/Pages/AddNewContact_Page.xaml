@@ -39,8 +39,8 @@
             </Grid>
         </VerticalStackLayout>
         <Grid Grid.Row="2" ColumnDefinitions="*, *" ColumnSpacing="10">
-        <Button Text="Add contact" Grid.Column="1" FontSize="30" FontAttributes="Bold"/>
-        <Button Text="Back" x:Name="Btn_Back" Clicked="Btn_Back_Clicked" FontSize="30" FontAttributes="Bold"/>
+            <Button Text="Add contact" Command="{Binding Path=AddNewUserCommand, Source={RelativeSource AncestorType={x:Type viewmodels:AddNewContactViewModel}}}" CommandParameter="{Binding .}" Grid.Column="1" FontSize="30" FontAttributes="Bold"/>
+            <Button Text="Back" x:Name="Btn_Back" Clicked="Btn_Back_Clicked" FontSize="30" FontAttributes="Bold"/>
         </Grid>
         <Label Text="made by Andreas Karlsson" Grid.Row="4" HorizontalTextAlignment="Center" FontSize="12"/>
     </Grid>
