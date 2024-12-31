@@ -4,9 +4,13 @@ using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 
 namespace Presentation_Maui_MainApp.ViewModels;
-public partial class ListAllContactsViewModel(IFileServices fileServices) : ObservableObject
+public partial class ListAllContactsViewModel : ObservableObject
 {
-  public readonly IFileServices _fileService = fileServices;
+  public readonly IFileServices _fileService;
+  public ListAllContactsViewModel(IFileServices fileServices)
+  {
+    _fileService = fileServices;
+  }
 
   [ObservableProperty]
   public partial ObservableCollection<IUserModel> Users { get; set; }

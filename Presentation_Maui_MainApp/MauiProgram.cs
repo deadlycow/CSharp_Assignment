@@ -5,6 +5,7 @@ using Busniess.Services;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Presentation_Maui_MainApp.Pages;
+using Presentation_Maui_MainApp.Services;
 using Presentation_Maui_MainApp.ViewModels;
 
 namespace Presentation_Maui_MainApp
@@ -23,21 +24,20 @@ namespace Presentation_Maui_MainApp
         });
 
       builder.Services.AddSingleton<ListAllContacts_Page>();
-      builder.Services.AddSingleton<ListAllContactsViewModel>();
+      builder.Services.AddTransient<ListAllContactsViewModel>();
       builder.Services.AddSingleton<AddNewContact_Page>();
-      builder.Services.AddSingleton<AddNewContactViewModel>();
-      builder.Services.AddTransient<UpdateContact_Page>();
+      builder.Services.AddTransient<AddNewContactViewModel>();
+      builder.Services.AddSingleton<UpdateContact_Page>();
       builder.Services.AddTransient<UpdateContactViewModel>();
 
       builder.Services.AddSingleton<IUserModel, UserModel>();
-      builder.Services.AddScoped<ISerializerService, SerializerService>();
-      builder.Services.AddScoped<IFileHandler, FileHandler>();
-      builder.Services.AddScoped<IUserFactory, UserFactory>();
-      builder.Services.AddScoped<IFileServices>(provider =>
+      builder.Services.AddTransient<ISerializerService, SerializerService>();
+      builder.Services.AddSingleton<IFileHandler, FileHandler>();
+      builder.Services.AddSingleton<IUserFactory, UserFactory>();
+      builder.Services.AddTransient<IFileServices>(provider =>
       {
         var fileHandler = provider.GetRequiredService<IFileHandler>();
         var serializer = provider.GetRequiredService<ISerializerService>();
-        //var options = provider.GetRequiredService<IOptions<FileServiceOptions>>().Value;
 
         return new FileServices("Data", "users.json", fileHandler, serializer);
       });
