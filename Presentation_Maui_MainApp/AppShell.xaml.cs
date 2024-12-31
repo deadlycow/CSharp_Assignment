@@ -10,6 +10,7 @@ namespace Presentation_Maui_MainApp
       
       Routing.RegisterRoute(nameof(AddNewContact_Page), typeof(AddNewContact_Page));
       Routing.RegisterRoute(nameof(ListAllContacts_Page), typeof(ListAllContacts_Page));
+      Routing.RegisterRoute(nameof(UpdateContact_Page), typeof(UpdateContact_Page));
     }
   }
 }

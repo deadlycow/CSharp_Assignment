@@ -14,11 +14,12 @@ public partial class AddNewContactViewModel(IFileServices fileServices, IUserFac
   public partial IUserModel UserForm { get; set; } = userFactory.Create();
 
   [RelayCommand]
-  public void AddNewUser()
+  public async Task AddNewUser()
   {
     UserForm.Id = IdGenerator.GenerateId();
     _fileServices.SaveToFile(UserForm);
 
     UserForm = _userFactory.Create();
+    await Shell.Current.GoToAsync("..");
   }
 }

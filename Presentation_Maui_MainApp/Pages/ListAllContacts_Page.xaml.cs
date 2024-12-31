@@ -9,7 +9,6 @@ public partial class ListAllContacts_Page : ContentPage
 		InitializeComponent();
 		BindingContext = viewModel;
 	}
-
   private async void Btn_Back_Clicked(object sender, EventArgs e)
   {
 		await Shell.Current.GoToAsync("..");
@@ -22,4 +21,5 @@ public partial class ListAllContacts_Page : ContentPage
       viewModel.UpdateList();
     }
   }
+
 }

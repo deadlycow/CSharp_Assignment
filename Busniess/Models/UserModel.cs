@@ -22,6 +22,6 @@ namespace Busniess.Models
     public string? Address { get; set; }
     public int? Zip { get; set; }
     public string? City { get; set; }
-    public string FullName => $"{FirstName} {LastName}";
+    public string? FullName => $"{FirstName} {LastName}";
   }
 }

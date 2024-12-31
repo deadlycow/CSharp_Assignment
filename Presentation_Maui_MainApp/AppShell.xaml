@@ -14,6 +14,7 @@
     <ShellContent Title="MainPage" Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}"/>
     <ShellContent Title="Add new contact" Route="AddNewContact_Page" ContentTemplate="{DataTemplate pages:AddNewContact_Page}"/>
     <ShellContent Title="List all contacts" Route="ListAllContacts_Page" ContentTemplate="{DataTemplate pages:ListAllContacts_Page}"/>
+    <ShellContent Title="Update contact" Route="UpdateContact_Page" ContentTemplate="{DataTemplate pages:UpdateContact_Page}"/>
 
 
 

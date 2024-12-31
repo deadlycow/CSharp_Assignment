@@ -26,6 +26,8 @@ namespace Presentation_Maui_MainApp
       builder.Services.AddSingleton<ListAllContactsViewModel>();
       builder.Services.AddSingleton<AddNewContact_Page>();
       builder.Services.AddSingleton<AddNewContactViewModel>();
+      builder.Services.AddTransient<UpdateContact_Page>();
+      builder.Services.AddTransient<UpdateContactViewModel>();
 
       builder.Services.AddSingleton<IUserModel, UserModel>();
       builder.Services.AddScoped<ISerializerService, SerializerService>();
