@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Presentation_Maui_MainApp.MainPage">
 
-    <Grid RowDefinitions="auto, *, *, auto" Padding="20" RowSpacing="20">
-        <Label Text="Main menu" Grid.Row="0" HorizontalOptions="Center" FontSize="22" FontAttributes="Bold"/>
-        <Button x:Name="Btn_AddNewContact" Clicked="Btn_AddNewContact_Clicked" Text="Add new contact" Grid.Row="1" FontSize="40" FontAttributes="Bold"/>
-        <Button x:Name="Btn_AllContacts" Clicked="Btn_AllContacts_Clicked" Text="All Contacts" Grid.Row="2" FontSize="40" FontAttributes="Bold"/>
-        <Label Text="made by Andreas Karlsson" Grid.Row="3" HorizontalTextAlignment="Center" FontSize="12"/>
+    <Grid RowDefinitions="*, *, auto" ColumnDefinitions="*,*" Padding="20" RowSpacing="20" ColumnSpacing="20">
+        <Label Text="My contact book 1.0" Grid.ColumnSpan="2" VerticalTextAlignment="Center" HorizontalOptions="Center" FontSize="40" FontAttributes="Bold"/>
+        <Button x:Name="Btn_AddNewContact" Clicked="Btn_AddNewContact_Clicked" Text="Add new contact" Grid.Row="1" FontSize="30" FontAttributes="Bold"/>
+        <Button x:Name="Btn_AllContacts" Clicked="Btn_AllContacts_Clicked" Text="All Contacts" Grid.Row="1" Grid.Column="1" FontSize="30" FontAttributes="Bold"/>
+        <Label Text="made by Andreas Karlsson" Grid.Row="2" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" FontSize="12" />
     </Grid>
 </ContentPage>

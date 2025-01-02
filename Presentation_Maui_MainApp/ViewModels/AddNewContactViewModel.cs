@@ -4,8 +4,9 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 namespace Presentation_Maui_MainApp.ViewModels;
-public partial class AddNewContactViewModel(IFileServices fileServices, IUserFactory userFactory) : ObservableObject
+public partial class AddNewContactViewModel(IFileServices fileServices, IUserFactory userFactory, ListAllContactsViewModel listAllContactsViewModel) : ObservableObject
 {
+  private readonly ListAllContactsViewModel _listAllContactsViewModel = listAllContactsViewModel;
   private readonly IFileServices _fileServices = fileServices;
   private readonly IUserFactory _userFactory = userFactory;
 
@@ -16,9 +17,14 @@ public partial class AddNewContactViewModel(IFileServices fileServices, IUserFac
   public async Task AddNewUser()
   {
     UserForm.Id = IdGenerator.GenerateId();
-    _fileServices.SaveToFile(UserForm);
 
-    UserForm = _userFactory.Create();
-    await Shell.Current.GoToAsync("..");
+    bool success = _fileServices.SaveToFile(UserForm);
+    _listAllContactsViewModel.TriggerUserChanged();
+
+    if (success)
+    {
+      await Shell.Current.DisplayAlert("Contact Created", $"The contact {UserForm.FirstName} {UserForm.LastName} has been successfully created.", "OK");
+      UserForm = _userFactory.Create();
+    }
   }
 }

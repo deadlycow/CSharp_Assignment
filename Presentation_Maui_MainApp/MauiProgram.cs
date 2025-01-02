@@ -3,9 +3,7 @@ using Busniess.Interfaces;
 using Busniess.Models;
 using Busniess.Services;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Presentation_Maui_MainApp.Pages;
-using Presentation_Maui_MainApp.Services;
 using Presentation_Maui_MainApp.ViewModels;
 
 namespace Presentation_Maui_MainApp
@@ -24,7 +22,7 @@ namespace Presentation_Maui_MainApp
         });
 
       builder.Services.AddSingleton<ListAllContacts_Page>();
-      builder.Services.AddTransient<ListAllContactsViewModel>();
+      builder.Services.AddSingleton<ListAllContactsViewModel>();
       builder.Services.AddSingleton<AddNewContact_Page>();
       builder.Services.AddTransient<AddNewContactViewModel>();
       builder.Services.AddSingleton<UpdateContact_Page>();

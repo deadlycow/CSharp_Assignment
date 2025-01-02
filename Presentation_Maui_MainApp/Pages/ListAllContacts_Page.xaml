@@ -20,26 +20,30 @@
 
                             <Label Text="Email:" FontAttributes="Italic" Grid.Row="1" Grid.Column="0" />
                             <Label Text="{Binding Email}" Grid.Row="1" Grid.Column="1" />
-                            
+
                             <Label Text="Phone:" FontAttributes="Italic" Grid.Row="2" Grid.Column="0" />
                             <Label Text="{Binding PhoneNumber}" Grid.Row="2" Grid.Column="1" />
 
                             <Label Text="Address:" FontAttributes="Italic" Grid.Row="3"/>
                             <Label Text="{Binding Address}" Grid.Row="3" Grid.Column="1"/>
-                            
+
                             <Label Text="Zip:" Grid.Row="4" Grid.Column="0"/>
                             <Label Text="{Binding Zip}" Grid.Row="4" Grid.Column="1"/>
-                            
+
                             <Label Text="City:" Grid.Row="5" Grid.Column="0"/>
                             <Label Text="{Binding City}" Grid.Row="5" Grid.Column="1"/>
-                            
-                            
+
+
                             <Button Text="Update" Grid.RowSpan="3" Grid.Row="1" Grid.Column="2"
                                     CommandParameter="{Binding .}"
-                                    Command="{Binding Path=NavigateToUpdateContactCommand, Source={RelativeSource AncestorType={x:Type viewmodels:ListAllContactsViewModel}}}"/>
+                                    Command="{Binding Path=NavigateToUpdateContactCommand,
+                                                      Source={RelativeSource AncestorType={x:Type viewmodels:ListAllContactsViewModel}},
+                                                      x:DataType=viewmodels:ListAllContactsViewModel}"/>
                             <Button Text="Delete" Grid.RowSpan="3" Grid.Row="1" Grid.Column="3" 
                                     CommandParameter="{Binding .}" 
-                                    Command="{Binding Path=RemoveUserCommand, Source={RelativeSource AncestorType={x:Type viewmodels:ListAllContactsViewModel}}}"/>
+                                    Command="{Binding Path=RemoveUserCommand,
+                                                      Source={RelativeSource AncestorType={x:Type viewmodels:ListAllContactsViewModel}},
+                                                      x:DataType=viewmodels:ListAllContactsViewModel}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

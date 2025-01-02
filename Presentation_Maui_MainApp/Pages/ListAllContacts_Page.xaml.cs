@@ -13,13 +13,4 @@ public partial class ListAllContacts_Page : ContentPage
   {
 		await Shell.Current.GoToAsync("..");
   }
-  protected override void OnAppearing()
-  {
-    base.OnAppearing();
-    if (BindingContext is ListAllContactsViewModel viewModel)
-    {
-      viewModel.UpdateList();
-    }
-  }
-
 }

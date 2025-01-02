@@ -3,9 +3,11 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 namespace Presentation_Maui_MainApp.ViewModels;
-public partial class UpdateContactViewModel(IFileServices fileServices) : ObservableObject, IQueryAttributable
+public partial class UpdateContactViewModel(IFileServices fileServices, IUserFactory userFactory, ListAllContactsViewModel listAllContactsViewModel) : ObservableObject, IQueryAttributable
 {
+  private readonly IUserFactory _userFactory = userFactory;
   private readonly IFileServices _fileServices = fileServices;
+  private readonly ListAllContactsViewModel _listAllContactsViewModel = listAllContactsViewModel;
 
   [ObservableProperty]
   public partial IUserModel User { get; set; }
@@ -14,8 +16,15 @@ public partial class UpdateContactViewModel(IFileServices fileServices) : Observ
     User = (query["User"] as IUserModel)!;
   }
   [RelayCommand]
-  public void EditUser()
+  public async Task EditUser()
   {
-    _fileServices.UpdateUser(User);
+    bool success = _fileServices.UpdateUser(User);
+    if (success)
+    {
+      await Shell.Current.DisplayAlert("Contact Updated", $"{User.FirstName} {User.LastName} has been updated successfully.", "OK");
+      _listAllContactsViewModel.TriggerUserChanged();
+      User = _userFactory.Create();
+    }
+
   }
 }

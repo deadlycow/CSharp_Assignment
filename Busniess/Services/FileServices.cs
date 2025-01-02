@@ -32,7 +32,6 @@ namespace Busniess.Services
         return false;
       }
     }
-
     public IEnumerable<IUserModel> LoadFromFile()
     {
       try
