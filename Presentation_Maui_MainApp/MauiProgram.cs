@@ -37,7 +37,10 @@ namespace Presentation_Maui_MainApp
         var fileHandler = provider.GetRequiredService<IFileHandler>();
         var serializer = provider.GetRequiredService<ISerializerService>();
 
-        return new FileServices("Data", "users.json", fileHandler, serializer);
+        string basePath = FileSystem.AppDataDirectory;
+        string filename = "users.json";
+
+        return new FileServices(basePath, filename, fileHandler, serializer);
       });
 
 #if DEBUG

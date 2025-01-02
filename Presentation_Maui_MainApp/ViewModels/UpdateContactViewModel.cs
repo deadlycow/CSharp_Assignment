@@ -24,6 +24,7 @@ public partial class UpdateContactViewModel(IFileServices fileServices, IUserFac
       await Shell.Current.DisplayAlert("Contact Updated", $"{User.FirstName} {User.LastName} has been updated successfully.", "OK");
       _listAllContactsViewModel.TriggerUserChanged();
       User = _userFactory.Create();
+      await Shell.Current.GoToAsync("..");
     }
 
   }

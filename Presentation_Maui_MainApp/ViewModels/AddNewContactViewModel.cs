@@ -19,10 +19,10 @@ public partial class AddNewContactViewModel(IFileServices fileServices, IUserFac
     UserForm.Id = IdGenerator.GenerateId();
 
     bool success = _fileServices.SaveToFile(UserForm);
-    _listAllContactsViewModel.TriggerUserChanged();
 
     if (success)
     {
+      _listAllContactsViewModel.TriggerUserChanged();
       await Shell.Current.DisplayAlert("Contact Created", $"The contact {UserForm.FirstName} {UserForm.LastName} has been successfully created.", "OK");
       UserForm = _userFactory.Create();
     }
