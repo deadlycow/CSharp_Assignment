@@ -46,4 +46,10 @@ public partial class ListAllContactsViewModel : ObservableObject
   {
     UserChanged?.Invoke(this, EventArgs.Empty);
   }
+
+  public bool IsListEmpty => Users == null || Users.Count == 0;
+  partial void OnUsersChanged(ObservableCollection<IUserModel> value)
+  {
+    OnPropertyChanged(nameof(IsListEmpty));
+  }
 }

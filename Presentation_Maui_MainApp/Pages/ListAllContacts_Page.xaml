@@ -11,6 +11,11 @@
 
     <Grid RowDefinitions="auto, *, auto, auto" Padding="20" RowSpacing="20">
         <Label Text="All Contacts" Grid.Row="0" HorizontalOptions="Center" FontSize="22" FontAttributes="Bold"/>
+
+        <StackLayout Grid.Row="1" IsVisible="{Binding IsListEmpty}">
+            <Label Text="No contacts available." HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="18" TextColor="Gray"/>
+        </StackLayout>
+
         <CollectionView Grid.Row="1" ItemsSource="{Binding Users}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type models:UserModel}">

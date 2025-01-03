@@ -26,6 +26,5 @@ public partial class UpdateContactViewModel(IFileServices fileServices, IUserFac
       User = _userFactory.Create();
       await Shell.Current.GoToAsync("..");
     }
-
   }
 }
